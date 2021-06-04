@@ -36,26 +36,6 @@ LableTyrone.move(100,80)
 
 
 
-class Scene(QtWidget):
-  def __init__(self):
-    super().__init__()
-
-
-
-class frist:
-  def __init__(self):
-    print("frist")
-
-class second(frist):
-  def __init__(self):
-    print("second")
-    super().__init__()
-
-
-
-
-it = second()
-
 window.show()
 
 sys.exit(app.exec_())
