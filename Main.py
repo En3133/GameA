@@ -1,5 +1,5 @@
-from SimpleGame.Scene import Scene
-from SimpleGame.Sprite import Sprite
+from Game.Scene import Scene
+from Game.Sprite import Sprite
 import sys
 from PyQt5.QtWidgets import QApplication
 
@@ -126,7 +126,113 @@ class Anthony(Sprite):
 		   self.dy = 0
 		   super().update()
 		
-		
+
+
+			
+
+
+
+
+# Sean's Sprite Sheet
+# https://opengameart.org/content/cat-fighter-sprite-sheet
+# Cat by DogChicken @ OpenGameArt.org
+
+#Lucas' sprite sheet
+#https://opengameart.org/content/esquire-animated-classic-hero-edit
+#Knight by Umz @http://umzgames.com/
+#villan: https://opengameart.org/content/monster-green
+#by PiXeRaT @ OpenGameArt.org
+
+#Siqi's sprite sheet - needs sprite sheet
+#https://opengameart.org/content/ninja-animated----hero
+#https://opengameart.org/content/explosion-sheet
+
+#https://opengameart.org/content/skull-monster-sprite-sheet
+
+#Qingyun's sprite sheet
+#https://opengameart.org/content/cute-monster-sprite-sheet(hero)
+#https://opengameart.org/content/skull-monster-sprite-sheet(villain)
+#Hero + Villian by DogChicken
+
+# Anthony's sprite sheet
+# https://opengameart.org/content/dog-platformer-fighter
+# No attribution needed
+
+#
+# Justin's sprite sheet
+# https://opengameart.org/content/pixel-art-mini-golem
+
+#By PixElthen
+
+
+
+# Alex's sprite sheet
+# https://opengameart.org/content/dude-with-arms
+# by Iwan Gabovitch
+
+
+
+#Johnny's sprite sheet
+#https://opengameart.org/content/cartoon-rogue --villain
+#By laetissima
+#https://opengameart.org/content/skeleton-warrior-2
+#by sonild
+
+
+
+class Game(Scene):
+	def __init__(self):
+		super().__init__(600,600)
+		self.sean = Sean(self)
+		self.sean.boomerang = "Test"
+		del self.sean.boomerang
+		self.johnny = Johnny(self)
+		self.siqi = Siqi(self)
+		self.alex = Alex(self)
+		self.justin = Justin(self)
+		self.qingyun = Qingyun(self)
+		self.lucas = Lucas(self)
+		self.anthony = Anthony(self)
+
+	
+    
+	def updateGame(self):
+		self.sean.update()
+		self.siqi.update()
+		self.johnny.update()
+		self.alex.update()
+		self.lucas.update()
+		self.qingyun.update()
+		self.justin.update()
+		self.anthony.update()
+
+myGame = Game()
+myGame.start()
+myGame.show()
+sys.exit(app.exec_())
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 			
