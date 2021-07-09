@@ -130,9 +130,9 @@ class Arthur(Character):
 		#self.playAnimation()
 		
     self.dx = 10
-    self.dy = -4		
-	  self.boundAction = Scene.WRAP
-	 #self.state = Character.runLeft
+    self.dy = -4
+    self.boundAction = Scene.WRAP
+	  #self.state = Character.runLeft
 
   def update(self):
      super().update()
