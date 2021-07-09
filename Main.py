@@ -74,9 +74,6 @@ class Ian(Character):
 		self.x = 90
 		self.y = 100
 
-
-
-
 		# add loadAnimation, generateAnimation, setAnimationSpeed, and playAnimation methods
 		# super().__init__(thisScene, "filename.png", sheetX, sheetY)
 		# loadAnimation(sheetX, sheetY, cellX, cellY)
@@ -88,7 +85,7 @@ class Ian(Character):
 		self.dx = 1
 		self.dy = 1		
 		self.boundAction = Scene.WRAP
-		self.state = Character.runLeft
+		#self.state = Character.runLeft
 
 
 	def update(self):
