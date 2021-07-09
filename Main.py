@@ -82,8 +82,8 @@ class Ian(Character):
 		#self.setAnimationSpeed(100)	# 10 times a second / ms
 		#self.playAnimation()
 		
-		self.dx = 1
-		self.dy = 1		
+		self.dx = 10
+		self.dy = -4		
 		self.boundAction = Scene.WRAP
 		#self.state = Character.runLeft
 
