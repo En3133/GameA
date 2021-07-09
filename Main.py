@@ -91,26 +91,6 @@ class Ian(Character):
 	def update(self):
 		super().update()
 
-	# Add a method called walkBehavior. 
-	# This should check if self.scene.keysDown[K_RIGHT]is True. If so self.facing to Facing.RIGHT, self.setCurrentCycle to Facing.RIGHT, call the self.startAnimation method. Set the DX to a value between 0 and 10
-	# If not check if self.scene.keysDown[K_LEFT] is True. If so self.facing to Facing.RIGHT, self.setCurrentCycle to Facing.RIGHT, call the self.startAnimation method. Set the DX to a value between 0 and -10
-#	def walkBehavior(self):
-#		if self.scene.keysDown[K_RIGHT]:
-#			self.facing = Facing.RIGHT
-#			self.setCurrentCycle(Facing.RIGHT)
-#			self.startAnimation()
-#			self.dx = 4
-#		elif self.scene.keysDown[K_LEFT]:
-#			self.facing = Facing.LEFT
-#			self.setCurrentCycle(Facing.LEFT)
-#			self.startAnimation()
-#			self.dx = -4
-
-	# Add a method called jumpBehavior. This should set the dy to a negative number (moving up), and set the stateTimer to the number of frames before falling.
-	#def jumpBehavior(self):
-#		self.stateTimer = 50
-#		self.dy = -5			
-
 
 
 
@@ -121,18 +101,11 @@ class Arthur(Character):
     self.x = 90
     self.y = 100
 
-		# add loadAnimation, generateAnimation, setAnimationSpeed, and playAnimation methods
-		# super().__init__(thisScene, "filename.png", sheetX, sheetY)
-		# loadAnimation(sheetX, sheetY, cellX, cellY)
-		#self.loadAnimation(500, 200, 100, 100)
-		#self.generateAnimationCycles()
-		#self.setAnimationSpeed(100)	# 10 times a second / ms
-		#self.playAnimation()
 		
     self.dx = 10
     self.dy = -4
     self.boundAction = Scene.WRAP
-	  #self.state = Character.runLeft
+	 
 
   def update(self):
      super().update()
@@ -142,7 +115,7 @@ class Arthur(Character):
 
 class Iris(Character):
   def __init__(self, thisScene):
-    super()._init_(thisScence, "sprites/oct.PNG", 100, 100)
+    super()._init_(thisScene, "sprites/oct.PNG", 100, 100)
     self.x = 50
     self.y = 100
     self.dx = 1
@@ -254,7 +227,11 @@ class Game(Scene):
     
     self.ian = Ian(self)
     self.arthur = Arthur(self)
-    
+    self.iris = Iris(self)
+    self.tyrone = Tyrone(self)
+    self.kelly = Kelly(self)
+    self.amy = Amy(self)
+
   def updateGame(self):
     self.bg0.update()
     self.bg1.update()
@@ -265,6 +242,10 @@ class Game(Scene):
 		# player sprites
     self.ian.update()
     self.arthur.update()
+    self.iris.update()
+    self.tyrone.update()
+    self.kelly.update()
+    self.amy.update()
 
 
 	
