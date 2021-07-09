@@ -140,7 +140,7 @@ class Arthur(Character):
 	
 
 
-class Iris(sprite):
+class Iris(Character):
   def __init__(self, thisScene):
     super()._init_(thisScence, "sprites/oct.PNG", 100, 100)
     self.x = 50
@@ -151,7 +151,7 @@ class Iris(sprite):
 
 
 
-class Amy(sprite):
+class Amy(Character):
   def __init__(self, thisScene):
     super().__init__(thisScene, "sprites/oct.PNG", 100, 100)
     self.x = 50
@@ -159,7 +159,7 @@ class Amy(sprite):
     self.dy = -1
     print("amy")
 
-class Tyrone(sprite):
+class Tyrone(Character):
   def __init__(self, thisScene):
     super().__init__(thisScene, "sprites/spider.PNG", 100, 100)
     self.x = 40
@@ -169,7 +169,7 @@ class Tyrone(sprite):
 
 
     
-class Kelly(sprite):
+class Kelly(Character):
    def __init__(self, thisScene):
     super().__init__(thisScene, "sprites/oct.PNG", 100,100)
     self.x = 250
