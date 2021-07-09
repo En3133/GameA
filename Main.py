@@ -116,7 +116,7 @@ class Ian(Character):
 
 
 class Arthur(Sprite):
-  def __init__(self):
+  def __init__(self, thisScene):
     super().__init__(thisScene, "sprites/somedude.jpg", 100, 100)
     self.x = 50
     self.y = 100
@@ -129,7 +129,7 @@ class Arthur(Sprite):
      
 
 class Iris(sprite):
-  def __init__(self):
+  def __init__(self, thisScene):
     super()._init_(thisScence, "sprites/oct.PNG", 100, 100)
     self.x = 50
     self.y = 100
@@ -140,7 +140,7 @@ class Iris(sprite):
 
 
 class Amy(sprite):
-  def __init__(self):
+  def __init__(self, thisScene):
     super().__init__(thisScene, "sprites/oct.PNG", 100, 100)
     self.x = 50
     self.y = 100
@@ -148,7 +148,7 @@ class Amy(sprite):
     print("amy")
 
 class Tyrone(sprite):
-  def __init__(self):
+  def __init__(self, thisScene):
     super().__init__(thisScene, "sprites/spider.PNG", 100, 100)
     self.x = 40
     self.x = 50
@@ -158,7 +158,7 @@ class Tyrone(sprite):
 
     
 class Kelly(sprite):
-   def __init__(self):
+   def __init__(self, thisScene):
     super().__init__(thisScene, "sprites/oct.PNG", 100,100)
     self.x = 250
     self.y = 120     
@@ -270,28 +270,6 @@ myGame = Game()
 myGame.start()
 myGame.show()
 sys.exit(app.exec_())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
