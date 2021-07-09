@@ -117,7 +117,7 @@ class Ian(Character):
 
 class Arthur(Sprite):
  	def __init__(self, thisScene):
-		super().__init__(thisScene,"sprites/oct.PNG",100,100)
+		super().__init__(thisScene,"sprites/spider.png",100,100)
 		self.x = 90
 		self.y = 100
 
