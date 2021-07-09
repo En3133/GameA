@@ -72,7 +72,7 @@ class Ian(Character):
 	def __init__(self, thisScene):
 		super().__init__(thisScene, "sprites/oct.PNG", 100, 100)
 		self.x = 90
-		self.y = 100
+		self.y = 20
 
 		# add loadAnimation, generateAnimation, setAnimationSpeed, and playAnimation methods
 		# super().__init__(thisScene, "filename.png", sheetX, sheetY)
