@@ -88,3 +88,7 @@ class Scene(QWidget):
 		for i in range(255):
 			if KeyTbl[i] == event.key():
 				self.BoardKeysDown = False
+     
+	def changeBoundSize(self, newWidth, newHeight):
+		self.width = newWidth
+		self.height = newHeight
