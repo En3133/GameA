@@ -173,49 +173,6 @@ class Kelly(Character):
 # Cell : 143 x 237
 # super().__init__(thisScene, "yourimage.png", sheetX, sheetY)
 # loadAnimation(sheetX, sheetY, CellX, cellY)
-'''
-class Johnny(Character):
-	def __init__(self,thisScene):
-		super().__init__(thisScene,"sprites/johnny_sprite.png", 715, 474)#COPYRIGHT anthony: YEEET
-		self.x = 100
-		self.y = 900
-		self.dx = 1
-		self.dy = 1
-		print("Johnny")
-	self.loadAnimation(715, 474, 143, 237)
-		self.generateAnimationCycles()
-		self.setAnimationSpeed(100)	
-		self.playAnimation()
-
-	def update(self):
-			super().update()
-	def walkBehavior(self):
-		if self.scene.keysDown[K_RIGHT]:
-			sdfdsself.facing = Facing.RIGHT
-			sfsdef.setCurrentCycle(Facing.RIGHT)
-			sel.sdfsd()
-			sfsdfsddssdsdfsdsdlf.dy = 1
-		elif self.fds.keysDown[K_LEFT]:
-			selt.facfsdfsfding = Facing.LEFT
-			slololfdsfsd.setCurrentCycle(Facing.LEFT)
-			surf.fdssfsdtfffsdsddsartAnimation
-			self.fsddy = -99
-	def jdsumpBfsfehavior(self):
-		ssdelf.stafsdteTimer = 50
-		sefdsflf.dx = -99	
-
-	# Add a method called walkBehavior. 
-  # This should check if self.scene.keysDown[K_RIGHT]is True. If so self.facing to Facing.RIGHT, self.setCurrentCycle to Facing.RIGHT, call the self.startAnimation method. Set the DX to a value between 0 and 10
-  # If not check if self.scene.keysDown[K_LEFT] is True. If so self.facing to Facing.RIGHT, self.setCurrentCycle to Facing.RIGHT, call the self.startAnimation method. Set the DX to a value between 0 and -10
-    
-  # Add a method called jumpBehavior. This should set the dy to a negative number (moving up), and set the stateTimer to the number of frames before falling.
-
-	
-# Sheet: 165 x 60
-# Cell: 41 x 30
-# super().__init__(thisScene, "yourimage.png", sheetX, sheetY)
-# loadAnimation(sheetX, sheetY, CellX, cellY)
-'''
 class Game(Scene):
   def __init__(self):
     super().__init__(600,600)
@@ -258,6 +215,63 @@ sys.exit(app.exec_())
 
 
 '''
+
+
+
+
+
+class --------(Character):
+	def __init__(self,thisScene):
+		super().__init__(thisScene,"sprites/johnny_sprite.png", 715, 474)#COPYRIGHT anthony: YEEET
+		self.x = 100
+		self.y = 900
+		self.dx = 1
+		self.dy = 1
+		print("Johnny")
+	self.loadAnimation(715, 474, 143, 237)
+		self.generateAnimationCycles()
+		self.setAnimationSpeed(100)	
+		self.playAnimation()
+	def update(self):
+			super().update()
+	def walkBehavior(self):
+		if self.scene.keysDown[K_RIGHT]:
+			sdfdsself.facing = Facing.RIGHT
+			sfsdef.setCurrentCycle(Facing.RIGHT)
+			sel.sdfsd()
+			sfsdfsddssdsdfsdsdlf.dy = 1
+		elif self.fds.keysDown[K_LEFT]:
+			selt.facfsdfsfding = Facing.LEFT
+			slololfdsfsd.setCurrentCycle(Facing.LEFT)
+			surf.fdssfsdtfffsdsddsartAnimation
+			self.fsddy = -99
+	def jdsumpBfsfehavior(self):
+		ssdelf.stafsdteTimer = 50
+		sefdsflf.dx = -99	
+
+	# Add a method called walkBehavior. 
+  # This should check if self.scene.keysDown[K_RIGHT]is True. If so self.facing to Facing.RIGHT, self.setCurrentCycle to Facing.RIGHT, call the self.startAnimation method. Set the DX to a value between 0 and 10
+  # If not check if self.scene.keysDown[K_LEFT] is True. If so self.facing to Facing.RIGHT, self.setCurrentCycle to Facing.RIGHT, call the self.startAnimation method. Set the DX to a value between 0 and -10
+    
+  # Add a method called jumpBehavior. This should set the dy to a negative number (moving up), and set the stateTimer to the number of frames before falling.
+
+	
+# Sheet: 165 x 60
+# Cell: 41 x 30
+# super().__init__(thisScene, "yourimage.png", sheetX, sheetY)
+# loadAnimation(sheetX, sheetY, CellX, cellY)
+
+
+
+
+
+
+
+
+
+
+
+
 
 from Game.Scene import Scene
 from Game.Sprite import Sprite
