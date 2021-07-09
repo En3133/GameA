@@ -115,11 +115,11 @@ class Ian(Character):
 
 
 
-class Arthur(Sprite):
- 	def __init__(self, thisScene):
-		super().__init__(thisScene,"sprites/spider.png",100,100)
-		self.x = 90
-		self.y = 100
+class Arthur(Character):
+  def __init__(self, thisScene):
+   super().__init__(thisScene,"sprites/spider.png",100,100)
+   self.x = 90
+   self.y = 100
 
 		# add loadAnimation, generateAnimation, setAnimationSpeed, and playAnimation methods
 		# super().__init__(thisScene, "filename.png", sheetX, sheetY)
@@ -129,11 +129,10 @@ class Arthur(Sprite):
 		#self.setAnimationSpeed(100)	# 10 times a second / ms
 		#self.playAnimation()
 		
-		self.dx = 10
-		self.dy = -4		
-		self.boundAction = Scene.WRAP
+  	self.dx = 10
+    self.dy = -4		
+	  self.boundAction = Scene.WRAP
 		#self.state = Character.runLeft
-
 
 	def update(self):
 		super().update()
