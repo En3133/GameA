@@ -69,7 +69,7 @@ class Character(Sprite):
 # add the loadAnimation, generateAnimationCycles, setAnimationspeed, and playAnimation methods
 class Ian(Character):
 	def __init__(self, thisScene):
-		super().__init__(thisScene, "---------------", 500, 200)
+		super().__init__(thisScene, "sprites/oct.PNG", 500, 200)
 		self.x = 90
 		self.y = 100
 
@@ -123,7 +123,7 @@ class Ian(Character):
 
 class Justin(Character):
     def __init__(self, thisScene):
-        super().__init__(thisScene, "sprites/justin_sprite.png", 100, 100)
+        super().__init__(thisScene, "sprites/spider.png", 100, 100)
         self.x = 100
         self.y = 100
         self.dx = 2
