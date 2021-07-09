@@ -136,36 +136,35 @@ class Iris(sprite):
     self.dx = 1
     self.dy = 2
     print("iris")
-    print(self.__bases__)
+
 
 
 class Amy(sprite):
   def __init__(self):
     super().__init__(thisScene, "sprites/oct.PNG", 100, 100)
-     self.x = 50
-     self.y = 100
-     self.dy = -1
-     print("amy")
-     print(self.__bases__)
+    self.x = 50
+    self.y = 100
+    self.dy = -1
+    print("amy")
 
 class Tyrone(sprite):
-def_innit_(self, thisScene)
-  super().__init__(thisScene, "sprites/spider.PNG", 100, 100)
-  self.x = 40
-  self.x = 50
-  self.dx = 3
-  print("Tyrone")
+  def __init__(self):
+    super().__init__(thisScene, "sprites/spider.PNG", 100, 100)
+    self.x = 40
+    self.x = 50
+    self.dx = 3
+    print("Tyrone")
 
 
     
 class Kelly(sprite):
-  def__init__(sprite
+   def __init__(self):
     super().__init__(thisScene, "sprites/oct.PNG", 100,100)
     self.x = 250
     self.y = 120     
     self.dx = -2
     self.dy = -1
-
+    print("Kelly")
 
 
 
