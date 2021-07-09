@@ -1,5 +1,5 @@
 import sys
-from SimpleGame.Keys import *
+from Game.Keys import *
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel
 #from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QTimer

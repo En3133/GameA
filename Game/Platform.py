@@ -1,4 +1,4 @@
-from SimpleGame.Sprite import Sprite
+from Game.Sprite import Sprite
 
 class Platform(Sprite):
 	def __init(self, thisScene, imageFile, xSize, ySize):

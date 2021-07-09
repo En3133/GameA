@@ -2,6 +2,7 @@ from Game.Scene import Scene
 from Game.Sprite import Sprite
 from Game.Background import Background
 from Game.Block import Block
+from Game.Keys import *
 import sys
 from PyQt5.QtWidgets import QApplication
 from Ground import Ground
@@ -39,9 +40,9 @@ class Character(Sprite):
 			if self.scene.keysDown[Scene.K_RIGHT] or self.scene.keysDown[Scene.K_LEFT]:
 				self.walkBehavior
 		elif self.state == States.WALK:
-			if (self.facing == facing.RIGHT) and (self.scene.keysDown[Scene.K_RIGHT] != True):
+			if (self.facing == Facing.RIGHT) and (self.scene.keysDown[Scene.K_RIGHT] != True):
 				self.standBehavior
-			if (self.facing == facing.LEFT) and (self.scene.keysDown[Scene.K_LEFT] != True):
+			if (self.facing == Facing.LEFT) and (self.scene.keysDown[Scene.K_LEFT] != True):
 				self.standBehavior
 		elif self.state == States.JUMP:
 			self.stateTimer -= 1
