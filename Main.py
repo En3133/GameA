@@ -244,28 +244,26 @@ class Johnny(Character):
 # loadAnimation(sheetX, sheetY, CellX, cellY)
 '''
 class Game(Scene):
-	def __init__(self):
+  def __init__(self):
     super().__init__(600,600)
-		self.bg0 = Background(self, "sprites/parallax-forest-back-trees.png", 1020, 600, .25, 0)
-		self.bg1 = Background(self, "sprites/parallax-forest-middle-trees.png", 1020, 600, .5, 0)		
-		self.bg2 = Background(self, "sprites/parallax-forest-front-trees.png", 1020, 600, .75, 0)
-		self.bg3 = Background(self, "sprites/parallax-forest-lights.png", 1020, 600, 1, 0)		
-		self.ground = Ground(self)
+    self.bg0 = Background(self, "sprites/parallax-forest-back-trees.png", 1020, 600, .25, 0)
+    self.bg1 = Background(self, "sprites/parallax-forest-middle-trees.png", 1020, 600, .5, 0)
+    self.bg2 = Background(self, "sprites/parallax-forest-front-trees.png", 1020, 600, .75, 0)
+    self.bg3 = Background(self, "sprites/parallax-forest-lights.png", 1020, 600, 1, 0)
+    self.ground = Ground(self)
     
-		self.ian = Ian(self)
+    self.ian = Ian(self)
     self.arthur = Arthur(self)
-
-
     
-	def updateGame(self):
-		self.bg0.update()
-		self.bg1.update()
-		self.bg2.update()
-		self.bg3.update()
-		self.ground.update()
+  def updateGame(self):
+    self.bg0.update()
+    self.bg1.update()
+    self.bg2.update()
+    self.bg3.update()
+    self.ground.update()
 
 		# player sprites
-		self.ian.update()
+    self.ian.update()
     self.arthur.update()
 
 
