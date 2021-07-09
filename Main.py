@@ -77,13 +77,13 @@ class Ian(Character):
 		# add loadAnimation, generateAnimation, setAnimationSpeed, and playAnimation methods
 		# super().__init__(thisScene, "filename.png", sheetX, sheetY)
 		# loadAnimation(sheetX, sheetY, cellX, cellY)
-		self.loadAnimation(500, 200, 100, 100)
-		self.generateAnimationCycles()
-		self.setAnimationSpeed(100)	# 10 times a second / ms
-		self.playAnimation()
+		#self.loadAnimation(500, 200, 100, 100)
+		#self.generateAnimationCycles()
+		#self.setAnimationSpeed(100)	# 10 times a second / ms
+		#self.playAnimation()
 		
-		self.dx = 1
-		self.dy = 1		
+		#self.dx = 1
+		#self.dy = 1		
 		self.boundAction = Scene.WRAP
 		#self.state = Character.runLeft
 
