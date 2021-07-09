@@ -114,6 +114,62 @@ class Ian(Character):
 
 
 
+
+class Arthur(Sprite):
+  def __init__(self):
+    super().__init__(thisScene, "sprites/somedude.jpg", 100, 100)
+    self.x = 50
+    self.y = 100
+    self.dx = -1 
+    def update(self):
+      if self.y > 600 and self.x > 200:
+        self.y = 600;
+           
+      super.update()
+     
+
+class Iris(sprite):
+  def __init__(self, thisScence):
+    super()._init_(thisScence, "sprites/oct.PNG", 100, 100)
+    self.x = 50
+    self.y = 100
+    self.dx = 1
+    self.dy = 2
+    print("iris")
+    print(self.__bases__)
+
+
+class Amy(sprite):
+  def __init__(self):
+    super().__init__(thisScene, "sprites/oct.PNG", 100, 100)
+     self.x = 50
+     self.y = 100
+     self.dy = -1
+     print("amy")
+     print(self.__bases__)
+
+class Tyrone(sprite):
+def_innit_(self, thisScene)
+  super().__init__(thisScene, "sprites/spider.PNG", 100, 100)
+  self.x = 40
+  self.x = 50
+  self.dx = 3
+  print("Tyrone")
+
+
+    
+class Kelly(sprite):
+  def__init__(sprite
+    super().__init__(thisScene, "sprites/oct.PNG", 100,100)
+    self.x = 250
+    self.y = 120     
+    self.dx = -2
+    self.dy = -1
+
+
+
+
+
 # Sheet 256 x 58
 # Cell: 32 x 29
 # super().__init__(thisScene, "yourimage.png", sheetX, sheetY)
@@ -186,7 +242,9 @@ class Game(Scene):
 		self.ground = Ground(self)
 
 		self.ian = Ian(self)
-
+    self.iris = Iris(self)
+    self.kelly = Kelly(self)
+    self.amy = Amy(self)
 		
 		
 
@@ -201,7 +259,11 @@ class Game(Scene):
 
 		# player sprites
 		self.ian.update()
-	
+      self.iris.update()
+      self.amy.update()
+      self.kelly.update()
+
+
 	
 
 myGame = Game()
