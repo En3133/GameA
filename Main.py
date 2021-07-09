@@ -116,17 +116,30 @@ class Ian(Character):
 
 
 class Arthur(Sprite):
-  def __init__(self, thisScene):
-    super().__init__(thisScene, "sprites/somedude.jpg", 100, 100)
-    self.x = 50
-    self.y = 100
-    self.dx = -1 
-    def update(self):
-      if self.y > 600 and self.x > 200:
-        self.y = 600;
-           
-      super.update()
-     
+ 	def __init__(self, thisScene):
+		super().__init__(thisScene,"sprites/oct.PNG",100,100)
+		self.x = 90
+		self.y = 100
+
+		# add loadAnimation, generateAnimation, setAnimationSpeed, and playAnimation methods
+		# super().__init__(thisScene, "filename.png", sheetX, sheetY)
+		# loadAnimation(sheetX, sheetY, cellX, cellY)
+		#self.loadAnimation(500, 200, 100, 100)
+		#self.generateAnimationCycles()
+		#self.setAnimationSpeed(100)	# 10 times a second / ms
+		#self.playAnimation()
+		
+		self.dx = 10
+		self.dy = -4		
+		self.boundAction = Scene.WRAP
+		#self.state = Character.runLeft
+
+
+	def update(self):
+		super().update()
+
+	
+
 
 class Iris(sprite):
   def __init__(self, thisScene):
@@ -240,11 +253,8 @@ class Game(Scene):
 		self.bg3 = Background(self, "sprites/parallax-forest-lights.png", 1020, 600, 1, 0)		
 		self.ground = Ground(self)
 
-
 		self.ian = Ian(self)
-    self.iris = Iris(self)
-    self.kelly = Kelly(self)
-    self.amy = Amy(self)
+    self.arthur = Arthur(self)
 		
 		
 
@@ -259,9 +269,7 @@ class Game(Scene):
 
 		# player sprites
 		self.ian.update()
-    self.iris.update()
-    self.amy.update()
-    self.kelly.update()
+    self.arthur.update()
 
 
 	
