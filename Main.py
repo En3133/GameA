@@ -132,20 +132,20 @@ class Justin(Character):
     def update(self):
         super().update()
     def walkBehavior(self):
-		if self.scene.keysDown[K_RIGHT]:
-			self.facing = Facing.RIGHT
-			self.setCurrentCycle(Facing.RIGHT)
-			self.startAnimation()
-			self.dx = 3
-		elif self.scene.keysDown[K_LEFT]:
-			self.facing = Facing.LEFT
-			self.setCurrentCycle(Facing.LEFT)
-			self.startAnimation()
-			self.dx = 3
-		self.loadAnimation(500, 500, 100, 100)
-		self.generateAnimationCycles()
-		self.setAnimationSpeed(100)
-		self.playAnimation()
+	    if self.scene.keysDown[K_RIGHT]:
+			  self.facing = Facing.RIGHT
+			  self.setCurrentCycle(Facing.RIGHT)
+			  self.startAnimation()
+			  self.dx = 3
+		  elif self.scene.keysDown[K_LEFT]:
+			  self.facing = Facing.LEFT
+			  self.setCurrentCycle(Facing.LEFT)
+			  self.startAnimation()
+			  self.dx = 3
+		  self.loadAnimation(500, 500, 100, 100)
+		  self.generateAnimationCycles()
+		  self.setAnimationSpeed(100)
+		  self.playAnimation()
     
 
   # Add a method called walkBehavior. 
@@ -160,6 +160,7 @@ class Justin(Character):
 # Cell : 143 x 237
 # super().__init__(thisScene, "yourimage.png", sheetX, sheetY)
 # loadAnimation(sheetX, sheetY, CellX, cellY)
+'''
 class Johnny(Character):
 	def __init__(self,thisScene):
 		super().__init__(thisScene,"sprites/johnny_sprite.png", 715, 474)#COPYRIGHT anthony: YEEET
@@ -201,9 +202,10 @@ class Johnny(Character):
 # Cell: 41 x 30
 # super().__init__(thisScene, "yourimage.png", sheetX, sheetY)
 # loadAnimation(sheetX, sheetY, CellX, cellY)
+'''
 class Siqi(Character):
     def __init__(self,thisScene):
-        super().__init__(thisScene, "siqi_sprite.png",165,60) 
+        super().__init__(thisScene, "sprites/spider.png",165,60) 
         self.x=-100
         self.y=-150
         self.dx=2
@@ -216,19 +218,19 @@ class Siqi(Character):
 	def update(self):
 		super().update()
     def walkBehavior(self):
-		if self.scene.keysDown[K_RIGHT]:
-			self.facing = Facing.RIGHT
-			self.setCurrentCycle(Facing.RIGHT)
-			self.startAnimation()
-			self.dx = 6
-		elif self.scene.keysDown[K_LEFT]:
-			self.facing = Facing.LEFT
-			self.setCurrentCycle(Facing.LEFT)
-			self.startAnimation(
-			self.dx = -6
+		  if self.scene.keysDown[K_RIGHT]:
+			  self.facing = Facing.RIGHT
+			  self.setCurrentCycle(Facing.RIGHT)
+			  self.startAnimation()
+			  self.dx = 6
+		  elif self.scene.keysDown[K_LEFT]:
+			  self.facing = Facing.LEFT
+			  self.setCurrentCycle(Facing.LEFT)
+			  self.startAnimation(
+			  self.dx = -6
     def jumpBehavior(self):
-		self.stateTimer = 50
-		self.dy = -5	
+		  self.stateTimer = 50
+	    self.dy = -5	
 
 	  # Add a method called walkBehavior. 
     # This should check if self.scene.keysDown[K_RIGHT]is True. If so self.facing to Facing.RIGHT, self.setCurrentCycle to Facing.RIGHT, call the self.startAnimation method. Set the DX to a value between 0 and 10
@@ -239,6 +241,7 @@ class Siqi(Character):
 
 # Sheet: 162 x 204
 # Cell: 81 x 102
+
 class Alex(Character):
     def __init__(self,thisScene):
         super().__init__(thisScene, "sprites/alex_sprite.png", 100, 102)
@@ -254,6 +257,7 @@ class Alex(Character):
       self.generateAnimationCycles()
       self.setAnimationspeed(100)
       self.playAnimation()
+      
 		# Add a method called walkBehavior. 
     # This should check if self.scene.keysDown[K_RIGHT]is True. If so self.facing to Facing.RIGHT, self.setCurrentCycle to Facing.RIGHT, call the self.startAnimation method. Set the DX to a value between 0 and 10
     def walkBehavior(self):
@@ -514,7 +518,7 @@ class Game(Scene):
 
 		self.ian = Ian(self)
 
-		self.johnny = Johnny(self)
+		self.siqi = Siqi(self)
 		
 
 	
@@ -528,7 +532,7 @@ class Game(Scene):
 
 		# player sprites
 		self.ian.update()
-		self.johnny.update()
+		self.siqi.update()
 	
 
 myGame = Game()
