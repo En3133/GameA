@@ -115,7 +115,7 @@ class Arthur(Character):
 
 class Iris(Character):
   def __init__(self, thisScene):
-    super()._init_(thisScene, "sprites/oct.PNG", 100, 100)
+    super().__init__(thisScene, "sprites/oct.PNG", 100, 100)
     self.x = 50
     self.y = 100
     self.dx = 1
