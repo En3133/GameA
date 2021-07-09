@@ -129,7 +129,7 @@ class Arthur(Sprite):
      
 
 class Iris(sprite):
-  def __init__(self, thisScence):
+  def __init__(self):
     super()._init_(thisScence, "sprites/oct.PNG", 100, 100)
     self.x = 50
     self.y = 100
@@ -240,6 +240,7 @@ class Game(Scene):
 		self.bg3 = Background(self, "sprites/parallax-forest-lights.png", 1020, 600, 1, 0)		
 		self.ground = Ground(self)
 
+
 		self.ian = Ian(self)
     self.iris = Iris(self)
     self.kelly = Kelly(self)
@@ -258,9 +259,9 @@ class Game(Scene):
 
 		# player sprites
 		self.ian.update()
-      self.iris.update()
-      self.amy.update()
-      self.kelly.update()
+    self.iris.update()
+    self.amy.update()
+    self.kelly.update()
 
 
 	
