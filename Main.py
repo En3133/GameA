@@ -100,11 +100,9 @@ class Arthur(Character):
     super().__init__(thisScene,"sprites/spider.png",100,100)
     self.x = 90
     self.y = 100
-
-		
     self.dx = 10
-    self.dy = -4
-    self.boundAction = Scene.WRAP
+    self.dy = 4
+    
 	 
 
   def update(self):
@@ -126,7 +124,7 @@ class Iris(Character):
 
 class Amy(Character):
   def __init__(self, thisScene):
-    super().__init__(thisScene, "sprites/oct.PNG", 100, 100)
+    super().__init__(thisScene, "sprites/Kung-Fu Dragon.PNG", 100, 100)
     self.x = 50
     self.y = 100
     self.dy = -1
