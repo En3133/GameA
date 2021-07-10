@@ -73,25 +73,13 @@ class Ian(Character):
 		super().__init__(thisScene, "sprites/oct.PNG", 100, 100)
 		self.x = 90
 		self.y = 20
-
-		# add loadAnimation, generateAnimation, setAnimationSpeed, and playAnimation methods
-		# super().__init__(thisScene, "filename.png", sheetX, sheetY)
-		# loadAnimation(sheetX, sheetY, cellX, cellY)
-		#self.loadAnimation(500, 200, 100, 100)
-		#self.generateAnimationCycles()
-		#self.setAnimationSpeed(100)	# 10 times a second / ms
-		#self.playAnimation()
-		
 		self.dx = 10
 		self.dy = -4		
 		self.boundAction = Scene.WRAP
 		#self.state = Character.runLeft
-
-
 	def update(self):
+
 		super().update()
-
-
 
 
 
@@ -102,13 +90,25 @@ class Arthur(Character):
     self.y = 100
     self.dx = 10
     self.dy = 4
-    
-	 
-
   def update(self):
      super().update()
 
 	
+
+class Yon(Character):
+  def __init__(self, thisScene):
+    super().__init__(thisScene,"sprites/spider.png",100,100)
+    self.x = 150
+    self.y = 250
+    self.dx = 1
+    self.dy = 10
+  def update(self):
+     super().update()
+
+	
+
+
+
 
 
 class Iris(Character):
@@ -124,7 +124,7 @@ class Iris(Character):
 
 class Amy(Character):
   def __init__(self, thisScene):
-    super().__init__(thisScene, "sprites/Kung-Fu Dragon.PNG", 100, 100)
+    super().__init__(thisScene, "sprites/bird.PNG", 100, 100)
     self.x = 50
     self.y = 100
     self.dy = -1
