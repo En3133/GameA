@@ -98,10 +98,10 @@ class Arthur(Character):
 class Yon(Character):
   def __init__(self, thisScene):
     super().__init__(thisScene,"sprites/spider.png",100,100)
-    self.x = 150
-    self.y = 250
-    self.dx = 1
-    self.dy = 10
+    self.x = 10
+    self.y = 20
+    self.dx = 0
+    self.dy = 5
   def update(self):
      super().update()
 
