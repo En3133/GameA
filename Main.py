@@ -194,7 +194,7 @@ class FlyingEnemy(BaseEnemy):
 
 class Ian(Character):
   def __init__(self, thisScene):
-    super().__init__(thisScene, "sprites/oct.PNG", 500, 200)
+    super().__init__(thisScene, "sprites/sean.png", 500, 200)
     self.x = 400
     self.y = 100
     self.dy = 10
