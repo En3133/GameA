@@ -13,8 +13,7 @@ class Sprite():
 	DIE = 4
 	CONTINUE = 5
 
-	def __init__(self, thisScene, imageFile, xSize, ySize):
-    self.width = xSize
+	def __init__(self, thisScene, imageFile, xSize, ySize):self.width = xSize
     self.height = ySize
 		self.animation = False
 		self.scene = thisScene
