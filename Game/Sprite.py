@@ -429,8 +429,8 @@ class Sprite():
 	
 
 	# distanceTo(sprite) determines the distance between two sprites, in pixels
-	def distanceTo(sprite):
-		distance = (int((math.sqrt((sprite.x - self.x)^2 + (sprite.y - self.y)^2))))
+	def distanceTo(self, sprite):
+		distance = (int((math.sqrt((sprite.x - self.x)**2 + (sprite.y - self.y)**2))))
 		
 		return distance
 
