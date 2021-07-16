@@ -451,7 +451,7 @@ class Game(Scene):
     self.ground.update(self.offsetX, self.offsetY)
 
     
-    self.ian.update(self.offsetX, self.offestY)
+    self.ian.update(self.offsetX, self.offsetY)
 
     #self.arthur = Arthur(self)
     #self.iris = Iris(self)
