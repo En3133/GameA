@@ -459,7 +459,7 @@ class Game(Scene):
     #self.kelly = Kelly(self)
     #self.amy = Amy(self)
     for enemy in self.spaceship.enemies:
-	    if enemy.distanceTo(self.main) < 50:
+	    if enemy.distanceTo(self.ian) < 50:
 	      print("You lose!")
 	      self.stop()
 
