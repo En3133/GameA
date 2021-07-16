@@ -242,28 +242,28 @@ class Arthur(Character):
     self.dx = 10
     self.dy = 4
   def walkBehavior(self):
-		if self.scene.keysDown[K_RIGHT]:
-			self.facing = 0
-		  self.setCurrentCycle(0)
-			self.dx = 4
+    if self.scene.keysDown[K_RIGHT]:
+      self.facing = 0
+      self.setCurrentCycle(0)
+      self.dx = 4
       self.state = States.WALK
-		elif self.scene.keysDown[K_LEFT]:
+    elif self.scene.keysDown[K_LEFT]:
       self.facing = 1
-		  self.setCurrentCycle(1)
-			self.dx = -4
+      self.setCurrentCycle(1)
+      self.dx = -4
       self.state = States.WALK
   def jumpBehavior(self):
       self.stateTimer = 25
       self.dy = -4
       self.state = States.JUMP
-	def update(self):
+  def update(self):
 
-		super().update()
+    super().update()
   def update(self):
      super().update()
 
 	
-
+'''
 class Yon(Character):
   def __init__(self, thisScene):
     super().__init__(thisScene,"sprites/spider.png",100,100)
@@ -409,31 +409,12 @@ class Kelly(Character):
 		super().update()
 
 
+'''
 
 
-# Sheet 256 x 58
-# Cell: 32 x 29
-# super().__init__(thisScene, "yourimage.png", sheetX, sheetY)
-# loadAnimation(sheetX, sheetY, CellX, cellY)
-
-
-
-  # Add a method called walkBehavior. 
-  # This should check if self.scene.keysDown[K_RIGHT]is True. If so self.facing to Facing.RIGHT, self.setCurrentCycle to Facing.RIGHT, call the self.startAnimation method. Set the DX to a value between 0 and 10
-  # If not check if self.scene.keysDown[K_LEFT] is True. If so self.facing to Facing.RIGHT, self.setCurrentCycle to Facing.RIGHT, call the self.startAnimation method. Set the DX to a value between 0 and -10
-    
-  # Add a method called jumpBehavior. This should set the dy to a negative number (moving up), and set the stateTimer to the number of frames before falling.
-
-
-
-# sheet: 	715 x 474
-# Cell : 143 x 237
-# super().__init__(thisScene, "yourimage.png", sheetX, sheetY)
-# loadAnimation(sheetX, sheetY, CellX, cellY)
 class Game(Scene):
-  class Game(Scene):
 	def __init__(self):
-		super().__init__(600,600)
+    super().__init__(600,600)
 
 		self.changeBoundSize((25*120),600)
 
