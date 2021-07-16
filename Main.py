@@ -437,7 +437,7 @@ class Game(Scene):
 	
     self.spaceship = Spaceship(self)
 
-    self.camera.follow(self.main)
+    self.camera.follow(self.ian)
 
 	
     
