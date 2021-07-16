@@ -31,13 +31,12 @@ class Sprite():
 		self.debug = False
 		self.boundX = xSize
 		self.boundY = ySize
-    self.moveAngle = 0
 
  
 		
 		# set bound action
 		self.boundAction = Sprite.WRAP	
-		
+		self.moveAngle = 0
 		# rotation variables
 		self.rotated = False
 		
