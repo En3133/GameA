@@ -14,8 +14,8 @@ class Sprite():
 	CONTINUE = 5
 
 	def __init__(self, thisScene, imageFile, xSize, ySize):
-		self.width = xSize
-		self.height = ySize
+    self.width = xSize
+    self.height = ySize
 		self.animation = False
 		self.scene = thisScene
 		self.x = 0
@@ -32,6 +32,7 @@ class Sprite():
 		self.boundX = xSize
 		self.boundY = ySize
 
+    self.moveAngle = 0
 		
 		# set bound action
 		self.boundAction = Sprite.WRAP	

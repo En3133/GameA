@@ -233,7 +233,7 @@ class Ian(Character):
 
 
 
-
+'''
 class Arthur(Character):
   def __init__(self, thisScene):
     super().__init__(thisScene,"sprites/spider.png",100,100)
@@ -263,7 +263,7 @@ class Arthur(Character):
      super().update()
 
 	
-'''
+
 class Yon(Character):
   def __init__(self, thisScene):
     super().__init__(thisScene,"sprites/spider.png",100,100)
