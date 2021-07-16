@@ -413,42 +413,42 @@ class Kelly(Character):
 
 
 class Game(Scene):
-	def __init__(self):
-    super().__init__(600,600)
+  def __init__(self):
+    super().__init__(600,600);
 
-		self.changeBoundSize((25*120),600)
+    self.changeBoundSize((25*120),600)
 
-		self.camera = Camera(self)
+    self.camera = Camera(self)
 
-		self.offsetX = 20
-		self.offsetY = 20
+    self.offsetX = 20
+    self.offsetY = 20
 
-		self.bg0 = Background(self, "sprites/parallax-forest-back-trees.png", 1020, 600, .25, 0)
-		self.bg1 = Background(self, "sprites/parallax-forest-middle-trees.png", 1020, 600, .5, 0)		
-		self.bg2 = Background(self, "sprites/parallax-forest-front-trees.png", 1020, 600, .75, 0)
-		self.bg3 = Background(self, "sprites/parallax-forest-lights.png", 1020, 600, 1, 0)		
-		self.ground = Ground(self)
+    self.bg0 = Background(self, "sprites/parallax-forest-back-trees.png", 1020, 600, .25, 0)
+    self.bg1 = Background(self, "sprites/parallax-forest-middle-trees.png", 1020, 600, .5, 0)		
+    self.bg2 = Background(self, "sprites/parallax-forest-front-trees.png", 1020, 600, .75, 0)
+    self.bg3 = Background(self, "sprites/parallax-forest-lights.png", 1020, 600, 1, 0)		
+    self.ground = Ground(self)
     self.ian = Ian(self)
-    self.arthur = Arthur(self)
-    self.iris = Iris(self)
-    self.tyrone = Tyrone(self)
-    self.kelly = Kelly(self)
-    self.amy = Amy(self)
+    #self.arthur = Arthur(self)
+    #self.iris = Iris(self)
+    #self.tyrone = Tyrone(self)
+    #self.kelly = Kelly(self)
+    #self.amy = Amy(self)
 	
-		self.spaceship = Spaceship(self)
+    self.spaceship = Spaceship(self)
 
-		self.camera.follow(self.main)
+    self.camera.follow(self.main)
 
 	
     
-	def updateGame(self):
-		self.camera.update()
+  def updateGame(self):
+    self.camera.update()
 
-		self.bg0.update(self.offsetX, self.offsetY)
-		self.bg1.update(self.offsetX, self.offsetY)
-		self.bg2.update(self.offsetX, self.offsetY)
-		self.bg3.update(self.offsetX, self.offsetY)
-		self.ground.update(self.offsetX, self.offsetY)
+    self.bg0.update(self.offsetX, self.offsetY)
+    self.bg1.update(self.offsetX, self.offsetY)
+    self.bg2.update(self.offsetX, self.offsetY)
+    self.bg3.update(self.offsetX, self.offsetY)
+    self.ground.update(self.offsetX, self.offsetY)
 
     
     self.ian.update(self.offsetX, self.offestY)
@@ -459,12 +459,12 @@ class Game(Scene):
     #self.kelly = Kelly(self)
     #self.amy = Amy(self)
     for enemy in self.spaceship.enemies:
-			if enemy.distanceTo(self.main) < 50:
-				print("You lose!")
-				self.stop()
+	    if enemy.distanceTo(self.main) < 50:
+	      print("You lose!")
+	      self.stop()
 
 		#always keep this last
-		self.spaceship.update(self.offsetX, self.offsetY)
+    self.spaceship.update(self.offsetX, self.offsetY)
 
 	
 
