@@ -193,18 +193,18 @@ class FlyingEnemy(BaseEnemy):
 
 
 class Ian(Character):
-	def __init__(self, thisScene):
-	  super().__init__(thisScene, "sprites/oct.PNG", 500, 200)
-		self.x = 400	
-		self.y = 100
-		self.dy = 10
-		self.loadAnimation(500, 200, 100, 100) 	# divides the sprite sheet into pieces
-		self.generateAnimationCycles() 	#sets up each "cylce" into rows
-		self.setAnimationSpeed(30)	#sets a QTimer to 100ms
-		self.playAnimation()	#starts the QTimer
+  def __init__(self, thisScene):
+    super().__init__(thisScene, "sprites/oct.PNG", 500, 200)
+    self.x = 400
+    self.y = 100
+    self.dy = 10
+    self.loadAnimation(500, 200, 100, 100) 	# divides the sprite sheet into pieces
+    self.generateAnimationCycles() 	#sets up each "cylce" into rows
+    self.setAnimationSpeed(30)	#sets a QTimer to 100ms
+    self.playAnimation()	#starts the QTimer
 
 		#make a state for you class
-		self.state = States.FALLING	#falling
+    self.state = States.FALLING	#falling
 
 	# Add a method called walkBehavior. 
 	# This should check if self.scene.keysDown[Scene.K_RIGHT]is True. If so self.facing to 0, self.setCurrentCycle to 0, call the self.playAnimation method. Set the DX to a value between 0 and 10. Set a State to States.WALK
