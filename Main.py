@@ -7,6 +7,7 @@ import sys
 from PyQt5.QtWidgets import QApplication
 from Ground import Ground
 from enum import Enum
+import random
 
 app = QApplication(sys.argv)
 
@@ -19,6 +20,28 @@ class States(Enum):
 class Facing(Enum):
 	RIGHT = 0
 	LEFT = 1
+
+class Camera():
+	def __init__(self, thisScene):
+		self.viewWidth = Scene.width
+		self.viewHeight = Scene.height
+		self.scene = thisScene
+
+	def follow(self, sprite):
+		self.sprite = sprite
+
+	def update(self):
+		if self.sprite.drawX < 250:
+			if self.sprite.x < 300:
+				self.sprite.x = 300
+			else:
+				self.scene.offsetX -= 6
+		if self.sprite.drawX > (350):
+			if self.sprite.x > (26*120):
+				self.sprite.x = (26*120)
+			else:
+				self.scene.offsetX += 6
+			
 
 class Character(Sprite):
 	def __init__(self, thisScene, sprite, x, y):
@@ -66,15 +89,120 @@ class Character(Sprite):
 		pass
 
 
+class Spaceship(Sprite):
+	def __init__(self, thisScene):
+		super().__init__(thisScene, "sprites/spaceship100.png", 100, 100)
+		self.x = 300
+		self.y = 100
+		self.dx = 6
+		self.timer = 60
+		self.enemies = []
+	def checkBounds(self):
+
+		if self.drawX < 0:
+			self.dx = 6
+		if self.drawX > 550:
+			self.dx = -6
+		self.timer -= 1
+		if self.timer < 1:
+			self.timer = 60
+			self.enemySpawn()
+
+		for enemy in self.enemies:
+			enemy.update(self.scene.offsetX, self.scene.offsetY)
+
+	def enemySpawn(self):
+		temp = random.randint(0,2)
+		newEnemy = 0
+		if temp == 0:
+			newEnemy = Enemy(self.scene, self.x, self.y)
+		elif temp==1:
+			newEnemy = GroundEnemy(self.scene, self.x, self.y)
+		elif temp ==2:
+			newEnemy = FlyingEnemy(self.scene, self.x, self.y)
+		self.enemies.append(newEnemy)
+		
+class BaseEnemy(Sprite):
+	def __init__(self, thisScene, file, width, height, x, y):
+		super().__init__(thisScene, file, width, height)
+		self.setBoundAction(Scene.DIE)
+		self.x = x
+		self.y = y
+		self.dy = 3
+		self.timer = 120
+	def update(self, offsetX, offsetY):
+		self.timer -= 1
+		if self.timer < 1:
+			self.makeDecision()
+		super().update(offsetX, offsetY)
+	def makeDecision(self):
+		pass		
+
+class Enemy(BaseEnemy):
+	def __init__(self, thisScene, x, y):
+		super().__init__(thisScene, "sprites/egg3.png", 128, 128, x, y)
+	def update(self, offsetX, offsetY):
+		super().update(offsetX, offsetY)
+	def makeDecision(self):
+		self.dy = 3
+
+class GroundEnemy(BaseEnemy):
+	def __init__(self, thisScene, x, y):
+		super().__init__(thisScene, "sprites/egg3.png", 128, 128, x, y)
+	def update(self, offsetX, offsetY):
+		super().update(offsetX, offsetY)
+	def makeDecision(self):
+		self.dy = 3
+
+class FlyingEnemy(BaseEnemy):
+	def __init__(self, thisScene, x, y):
+		super().__init__(thisScene, "sprites/birb.png", 100, 73, x, y)
+		self.dy = 0
+	def update(self, offsetX, offsetY):
+		super().update(offsetX, offsetY)
+	def makeDecision(self):
+		self.timer = 30
+		decision = random.randint(0,1)		
+		# if the decision is random
+		if decision == 0:
+			self.dx = random.randint(-5, 5)
+			self.dy = random.randint(-5, 5)
+		# home in on main character
+		if decision == 1:
+			# find out if the main character is to the left of the enemy
+			if self.scene.ian.x < self.x:
+				movementX = -1
+			# find out if the main character is to the right of the enemy - justin
+			if self.scene.ian.x > self.x:
+				movementX = 1
+
+			# find out if the main character is underneath the enemy (hint check y)- lucas
+			if self.scene.ian.y < self.y:
+				movementY = -1
+			# find out if the main character is above of the enemy - johnny
+			if self.scene.ian.y > self.y:
+				movementY = 1
+
+			# move at random speed
+			self.dx = (random.randint(0,5) * movementX)
+			self.dy = (random.randint(0,5) * movementY)
+
+
+
+
+
 # change the numbers of your sprite's iniit to your sprite sheet
 # add the loadAnimation, generateAnimationCycles, setAnimationspeed, and playAnimation methods
 class Ian(Character):
 	def __init__(self, thisScene):
-		super().__init__(thisScene, "sprites/ghost_thing.png", 100, 100)
+		super().__init__(thisScene, "sprites/ghost_thing.png", 500, 200)
 		self.x = 100
 		self.y = 20
 		self.dx = 10
-		self.dy = 1		
+		self.dy = 1
+    #self.loadAnimation(520, 200, 100, 100)
+    #self.gneerateAnimationCycles()
+    #self.setAnimationSpeed(30)
 		self.boundAction = Scene.WRAP
 		#self.state = Character.runLeft
 	def update(self):
