@@ -70,7 +70,7 @@ class Character(Sprite):
 # add the loadAnimation, generateAnimationCycles, setAnimationspeed, and playAnimation methods
 class Ian(Character):
 	def __init__(self, thisScene):
-		super().__init__(thisScene, "sprites/oct.PNG", 100, 100)
+		super().__init__(thisScene, "sprites/ghost_thing.png", 100, 100)
 		self.x = 90
 		self.y = 20
 		self.dx = 10
@@ -85,7 +85,7 @@ class Ian(Character):
 
 class Arthur(Character):
   def __init__(self, thisScene):
-    super().__init__(thisScene,"sprites/spider.png",100,100)
+    super().__init__(thisScene,"sprites/rockperson.png",100,100)
     self.x = 90
     self.y = 100
     self.dx = 10
@@ -97,15 +97,13 @@ class Arthur(Character):
 
 class Yon(Character):
   def __init__(self, thisScene):
-    super().__init__(thisScene,"sprites/spider.png",100,100)
+    super().__init__(thisScene,"sprites/dog_running.png",100,100)
     self.x = 10
     self.y = 20
     self.dx = 0
     self.dy = 5
   def update(self):
      super().update()
-
-	
 
 
 
@@ -124,7 +122,7 @@ class Iris(Character):
 
 class Amy(Character):
   def __init__(self, thisScene):
-    super().__init__(thisScene, "sprites/bird.PNG", 100, 100)
+    super().__init__(thisScene, "sprites/sean_sprite.png", 100, 100)
     self.x = 50
     self.y = 100
     self.dy = -1
@@ -132,7 +130,7 @@ class Amy(Character):
 
 class Tyrone(Character):
   def __init__(self, thisScene):
-    super().__init__(thisScene, "sprites/spider.PNG", 100, 100)
+    super().__init__(thisScene, "sprites/warrior.png", 100, 100)
     self.x = 40
     self.x = 50
     self.dx = 3
