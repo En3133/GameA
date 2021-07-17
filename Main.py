@@ -74,7 +74,7 @@ class Ian(Character):
 		self.x = 90
 		self.y = 20
 		self.dx = 10
-		self.dy = -4		
+		self.dy = 1		
 		self.boundAction = Scene.WRAP
 		#self.state = Character.runLeft
 	def update(self):
@@ -125,7 +125,7 @@ class Amy(Character):
     super().__init__(thisScene, "sprites/sean_sprite.png", 100, 100)
     self.x = 50
     self.y = 100
-    self.dy = -1
+    self.dy = 2
     print("amy")
 
 class Tyrone(Character):
@@ -144,7 +144,7 @@ class Kelly(Character):
     self.x = 250
     self.y = 120     
     self.dx = -2
-    self.dy = -1
+    self.dy = 2
     print("Kelly")
 
 
