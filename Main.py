@@ -71,7 +71,7 @@ class Character(Sprite):
 class Ian(Character):
 	def __init__(self, thisScene):
 		super().__init__(thisScene, "sprites/ghost_thing.png", 100, 100)
-		self.x = 90
+		self.x = 100
 		self.y = 20
 		self.dx = 10
 		self.dy = 1		
@@ -88,7 +88,7 @@ class Arthur(Character):
     super().__init__(thisScene,"sprites/rockperson.png",100,100)
     self.x = 90
     self.y = 100
-    self.dx = 10
+    self.dx = 20
     self.dy = 4
   def update(self):
      super().update()
@@ -140,7 +140,7 @@ class Tyrone(Character):
     
 class Kelly(Character):
    def __init__(self, thisScene):
-    super().__init__(thisScene, "sprites/oct.PNG", 100,100)
+    super().__init__(thisScene, "sprites/nija.PNG", 100,100)
     self.x = 250
     self.y = 120     
     self.dx = -2
