@@ -8,6 +8,6 @@ class Ground(Block):
 		self.x = 0
 		self.y = 500
 		
-	def update(self):
+	def update(self, offsetX = 0, offsetY = 0):
 				
-		super().update()
+		super().update(offsetX, offsetY)

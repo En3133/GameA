@@ -1,8 +1,7 @@
 from Game.Scene import Scene
 from Game.Sprite import Sprite
 from Game.Background import Background
-from Game.Block import Block
-from Game.Keys import *
+from Game.Block import Block #from Game.Keys import *
 import sys
 from PyQt5.QtWidgets import QApplication
 from Ground import Ground
@@ -50,29 +49,34 @@ class Character(Sprite):
 		super().__init__(thisScene, sprite, x, y)
 		self.stateTimer = 0
 		self.dy = 7 
+		self.setBoundAction(Scene.CONTINUE)
 		
-	def update(self):
+	def update(self, offsetX = 0, offsetY = 0):
 		if self.state == States.FALLING:
 			if self.scene.ground.collidesWith(self):
-				self.y = self.scene.ground.y - (self.height/2 + self.scene.ground.height / 2)
-				self.standBehavior
+				self.standBehavior()
 		elif self.state == States.STAND or self.state == States.WALK:
-			if self.scene.keyDown[Scene.K_SPACE]:
-				self.jumpBehavior
-		elif self.state == States.STAND:
-			if self.scene.keysDown[Scene.K_RIGHT] or self.scene.keysDown[Scene.K_LEFT]:
-				self.walkBehavior
-		elif self.state == States.WALK:
-			if (self.facing == Facing.RIGHT) and (self.scene.keysDown[Scene.K_RIGHT] != True):
-				self.standBehavior
-			if (self.facing == Facing.LEFT) and (self.scene.keysDown[Scene.K_LEFT] != True):
-				self.standBehavior
+			if self.scene.keysDown[Scene.K_SPACE]:
+				self.jumpBehavior()
+			elif self.scene.keysDown[Scene.K_RIGHT] or self.scene.keysDown[Scene.K_LEFT]:
+				self.walkBehavior()
+			elif self.state == States.WALK:
+				if (self.facing == Facing.RIGHT) and (self.scene.keysDown[Scene.K_RIGHT] == None):
+					self.standBehavior()
+				if (self.facing == Facing.LEFT) and (self.scene.keysDown[Scene.K_LEFT] == None):
+					self.standBehavior()
 		elif self.state == States.JUMP:
-			self.stateTimer -= 1
+			self.stateTimer = self.stateTimer - 1
 			if self.stateTimer < 1:
 				self.dy = self.dy * -1
 				self.state = States.FALLING
-		super().update()
+		super().update(offsetX, offsetY)
+
+	def standBehavior(self):
+		self.dy = 0
+		self.dx = 0
+		self.state = States.STAND
+		self.pauseAnimation()
 
 	def standBehavior(self):
 		self.dy = 0
@@ -188,36 +192,73 @@ class FlyingEnemy(BaseEnemy):
 			self.dy = (random.randint(0,5) * movementY)
 
 
-
-
-
-# change the numbers of your sprite's iniit to your sprite sheet
-# add the loadAnimation, generateAnimationCycles, setAnimationspeed, and playAnimation methods
 class Ian(Character):
-	def __init__(self, thisScene):
-		super().__init__(thisScene, "sprites/ghost_thing.png", 500, 200)
-		self.x = 100
-		self.y = 20
-		self.dx = 10
-		self.dy = 1
-    #self.loadAnimation(520, 200, 100, 100)
-    #self.gneerateAnimationCycles()
-    #self.setAnimationSpeed(30)
-		self.boundAction = Scene.WRAP
-		#self.state = Character.runLeft
-	def update(self):
+  def __init__(self, thisScene):
+    super().__init__(thisScene, "sprites/sean.png", 500, 200)
+    self.x = 400
+    self.y = 100
+    self.dy = 10
+    self.loadAnimation(500, 200, 100, 100) 	# divides the sprite sheet into pieces
+    self.generateAnimationCycles() 	#sets up each "cylce" into rows
+    self.setAnimationSpeed(30)	#sets a QTimer to 100ms
+    self.playAnimation()	#starts the QTimer
 
-		super().update()
+		#make a state for you class
+    self.state = States.FALLING	#falling
+
+	# Add a method called walkBehavior. 
+	# This should check if self.scene.keysDown[Scene.K_RIGHT]is True. If so self.facing to 0, self.setCurrentCycle to 0, call the self.playAnimation method. Set the DX to a value between 0 and 10. Set a State to States.WALK
+	# If not check if self.scene.keysDown[Scene.K_LEFT] is True. If so self.facing to 1, self.setCurrentCycle to 1, call the self.playAnimation method. Set the DX to a value between 0 and -10. Set a State to States.WALK
+  def walkBehavior(self):
+    if self.scene.keysDown[Scene.K_RIGHT]:
+      self.facing = 0
+      self.setCurrentCycle(0)
+      self.playAnimation()
+      self.dx = 4
+      self.state = States.WALK
+    elif self.scene.keysDown[Scene.K_LEFT]:
+      self.facing = 1
+      self.setCurrentCycle(1)
+      self.playAnimation()
+      self.dx = -4
+      self.state = States.WALK
+
+	# Add a method called jumpBehavior. This should set the dy to a negative number (moving up), and set the stateTimer to the number of frames before falling.
+  def jumpBehavior(self):
+    self.stateTimer = 25
+    self.dy = -4	
+    self.state = States.JUMP
 
 
 
+
+
+'''
 class Arthur(Character):
   def __init__(self, thisScene):
-    super().__init__(thisScene,"sprites/rockperson.png",100,100)
+    super().__init__(thisScene,"sprites/spider.png",100,100)
     self.x = 90
     self.y = 100
-    self.dx = 20
+    self.dx = 10
     self.dy = 4
+  def walkBehavior(self):
+    if self.scene.keysDown[K_RIGHT]:
+      self.facing = 0
+      self.setCurrentCycle(0)
+      self.dx = 4
+      self.state = States.WALK
+    elif self.scene.keysDown[K_LEFT]:
+      self.facing = 1
+      self.setCurrentCycle(1)
+      self.dx = -4
+      self.state = States.WALK
+  def jumpBehavior(self):
+      self.stateTimer = 25
+      self.dy = -4
+      self.state = States.JUMP
+  def update(self):
+
+    super().update()
   def update(self):
      super().update()
 
@@ -225,11 +266,29 @@ class Arthur(Character):
 
 class Yon(Character):
   def __init__(self, thisScene):
-    super().__init__(thisScene,"sprites/dog_running.png",100,100)
+    super().__init__(thisScene,"sprites/spider.png",100,100)
     self.x = 10
     self.y = 20
     self.dx = 0
     self.dy = 5
+  def walkBehavior(self):
+		if self.scene.keysDown[K_RIGHT]:
+			self.facing = 0
+		  self.setCurrentCycle(0)
+			self.dx = 4
+      self.state = States.WALK
+		elif self.scene.keysDown[K_LEFT]:
+      self.facing = 1
+		  self.setCurrentCycle(1)
+			self.dx = -4
+      self.state = States.WALK
+  def jumpBehavior(self):
+      self.stateTimer = 25
+      self.dy = -4
+      self.state = States.JUMP
+	def update(self):
+
+		super().update()
   def update(self):
      super().update()
 
@@ -239,95 +298,173 @@ class Yon(Character):
 
 class Iris(Character):
   def __init__(self, thisScene):
-    super().__init__(thisScene, "sprites/oct.PNG", 100, 100)
+    super().__init__(thisScene, "sprites/old man.PNG", 100, 100)
     self.x = 50
     self.y = 100
     self.dx = 1
     self.dy = 2
-    print("iris")
+  def walkBehavior(self):
+		if self.scene.keysDown[K_RIGHT]:
+			self.facing = 0
+		  self.setCurrentCycle(0)
+			self.dx = 4
+      self.state = States.WALK
+		elif self.scene.keysDown[K_LEFT]:
+      self.facing = 1
+		  self.setCurrentCycle(1)
+			self.dx = -4
+      self.state = States.WALK
+  def jumpBehavior(self):
+      self.stateTimer = 25
+      self.dy = -4
+      self.state = States.JUMP
+	def update(self):
+
+		super().update()
+
 
 
 
 class Amy(Character):
   def __init__(self, thisScene):
-    super().__init__(thisScene, "sprites/sean_sprite.png", 100, 100)
+    super().__init__(thisScene, "sprites/bird.PNG", 100, 100)
     self.x = 50
     self.y = 100
-    self.dy = 2
-    print("amy")
+    self.dy = -1
+  def walkBehavior(self):
+		if self.scene.keysDown[K_RIGHT]:
+			self.facing = 0
+		  self.setCurrentCycle(0)
+			self.dx = 4
+      self.state = States.WALK
+		elif self.scene.keysDown[K_LEFT]:
+      self.facing = 1
+		  self.setCurrentCycle(1)
+			self.dx = -4
+      self.state = States.WALK
+  def jumpBehavior(self):
+      self.stateTimer = 25
+      self.dy = -4
+      self.state = States.JUMP
+	def update(self):
+
+		super().update()
+
+
+
+
+
+
 
 class Tyrone(Character):
   def __init__(self, thisScene):
-    super().__init__(thisScene, "sprites/warrior.png", 100, 100)
+    super().__init__(thisScene, "sprites/spider.PNG", 100, 100)
     self.x = 40
     self.x = 50
     self.dx = 3
-    print("Tyrone")
+  def walkBehavior(self):
+		if self.scene.keysDown[K_RIGHT]:
+			self.facing = 0
+		  self.setCurrentCycle(0)
+			self.dx = 4
+      self.state = States.WALK
+		elif self.scene.keysDown[K_LEFT]:
+      self.facing = 1
+		  self.setCurrentCycle(1)
+			self.dx = -4
+      self.state = States.WALK
+  def jumpBehavior(self):
+      self.stateTimer = 25
+      self.dy = -4
+      self.state = States.JUMP
+	def update(self):
+		super().update()
 
 
     
 class Kelly(Character):
    def __init__(self, thisScene):
-    super().__init__(thisScene, "sprites/nija.PNG", 100,100)
+    super().__init__(thisScene, "sprites/oct.PNG", 100,100)
     self.x = 250
     self.y = 120     
     self.dx = -2
-    self.dy = 2
-    print("Kelly")
+    self.dy = -1
+  def walkBehavior(self):
+		if self.scene.keysDown[K_RIGHT]:
+			self.facing = 0
+		  self.setCurrentCycle(0)
+			self.dx = 4
+      self.state = States.WALK
+		elif self.scene.keysDown[K_LEFT]:
+      self.facing = 1
+		  self.setCurrentCycle(1)
+			self.dx = -4
+      self.state = States.WALK
+  def jumpBehavior(self):
+      self.stateTimer = 25
+      self.dy = -4
+      self.state = States.JUMP
+	def update(self):
+
+		super().update()
 
 
+'''
 
 
-# Sheet 256 x 58
-# Cell: 32 x 29
-# super().__init__(thisScene, "yourimage.png", sheetX, sheetY)
-# loadAnimation(sheetX, sheetY, CellX, cellY)
-
-
-
-  # Add a method called walkBehavior. 
-  # This should check if self.scene.keysDown[K_RIGHT]is True. If so self.facing to Facing.RIGHT, self.setCurrentCycle to Facing.RIGHT, call the self.startAnimation method. Set the DX to a value between 0 and 10
-  # If not check if self.scene.keysDown[K_LEFT] is True. If so self.facing to Facing.RIGHT, self.setCurrentCycle to Facing.RIGHT, call the self.startAnimation method. Set the DX to a value between 0 and -10
-    
-  # Add a method called jumpBehavior. This should set the dy to a negative number (moving up), and set the stateTimer to the number of frames before falling.
-
-
-
-# sheet: 	715 x 474
-# Cell : 143 x 237
-# super().__init__(thisScene, "yourimage.png", sheetX, sheetY)
-# loadAnimation(sheetX, sheetY, CellX, cellY)
 class Game(Scene):
   def __init__(self):
-    super().__init__(600,600)
+    super().__init__(600,600);
+
+    self.changeBoundSize((25*120),600)
+
+    self.camera = Camera(self)
+
+    self.offsetX = 20
+    self.offsetY = 20
+
     self.bg0 = Background(self, "sprites/parallax-forest-back-trees.png", 1020, 600, .25, 0)
-    self.bg1 = Background(self, "sprites/parallax-forest-middle-trees.png", 1020, 600, .5, 0)
+    self.bg1 = Background(self, "sprites/parallax-forest-middle-trees.png", 1020, 600, .5, 0)		
     self.bg2 = Background(self, "sprites/parallax-forest-front-trees.png", 1020, 600, .75, 0)
-    self.bg3 = Background(self, "sprites/parallax-forest-lights.png", 1020, 600, 1, 0)
+    self.bg3 = Background(self, "sprites/parallax-forest-lights.png", 1020, 600, 1, 0)		
     self.ground = Ground(self)
-    
     self.ian = Ian(self)
-    self.arthur = Arthur(self)
-    self.iris = Iris(self)
-    self.tyrone = Tyrone(self)
-    self.kelly = Kelly(self)
-    self.amy = Amy(self)
+    #self.arthur = Arthur(self)
+    #self.iris = Iris(self)
+    #self.tyrone = Tyrone(self)
+    #self.kelly = Kelly(self)
+    #self.amy = Amy(self)
+	
+    self.spaceship = Spaceship(self)
 
+    self.camera.follow(self.ian)
+
+	
+    
   def updateGame(self):
-    self.bg0.update()
-    self.bg1.update()
-    self.bg2.update()
-    self.bg3.update()
-    self.ground.update()
+    self.camera.update()
 
-		# player sprites
-    self.ian.update()
-    self.arthur.update()
-    self.iris.update()
-    self.tyrone.update()
-    self.kelly.update()
-    self.amy.update()
+    self.bg0.update(self.offsetX, self.offsetY)
+    self.bg1.update(self.offsetX, self.offsetY)
+    self.bg2.update(self.offsetX, self.offsetY)
+    self.bg3.update(self.offsetX, self.offsetY)
+    self.ground.update(self.offsetX, self.offsetY)
 
+    
+    self.ian.update(self.offsetX, self.offsetY)
+
+    #self.arthur = Arthur(self)
+    #self.iris = Iris(self)
+    #self.tyrone = Tyrone(self)
+    #self.kelly = Kelly(self)
+    #self.amy = Amy(self)
+    for enemy in self.spaceship.enemies:
+	    if enemy.distanceTo(self.ian) < 50:
+	      print("You lose!")
+	      self.stop()
+
+		#always keep this last
+    self.spaceship.update(self.offsetX, self.offsetY)
 
 	
 
@@ -419,7 +556,7 @@ class Ian(Sprite):
     print("ian")
     def update(self):
       if self.y > 600:
-        self.y = 600;
+        self.y = 600
            
       super.update()
   

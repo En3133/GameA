@@ -32,10 +32,11 @@ class Sprite():
 		self.boundX = xSize
 		self.boundY = ySize
 
+ 
 		
 		# set bound action
 		self.boundAction = Sprite.WRAP	
-		
+		self.moveAngle = 0
 		# rotation variables
 		self.rotated = False
 		
@@ -429,8 +430,8 @@ class Sprite():
 	
 
 	# distanceTo(sprite) determines the distance between two sprites, in pixels
-	def distanceTo(sprite):
-		distance = (int((math.sqrt((sprite.x - self.x)^2 + (sprite.y - self.y)^2))))
+	def distanceTo(self, sprite):
+		distance = (int((math.sqrt((sprite.x - self.x)**2 + (sprite.y - self.y)**2))))
 		
 		return distance
 
